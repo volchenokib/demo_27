@@ -29,6 +29,7 @@
           <v-date-picker
             v-model="dateFrom"
             min="2018-01-01"
+            :max="today"
             no-title
             @input="menuFrom = false"
             scrollable
@@ -61,6 +62,7 @@
               v-on="on"
             ></v-text-field>
           </template>
+
           <v-date-picker
             v-model="dateTo"
             no-title
@@ -71,6 +73,14 @@
           ></v-date-picker>
         </v-menu>
       </v-layout>
+
+      <!-- radio buttons -->
+      <v-radio-group v-model="type" :mandatory="true">
+        <v-radio label="закупка у единственного поставщика" value="type1"></v-radio>
+        <v-radio label="электронный аукцион" value="type2"></v-radio>
+      </v-radio-group>
+
+      <!-- button -->
       <v-btn color="primary" flat @click.prevent="submit">сформировать</v-btn>
     </v-card>
   </v-layout>
@@ -91,7 +101,8 @@ export default {
     dateFrom: null,
     dateTo: null,
     menuFrom: false,
-    menuTo: false
+    menuTo: false,
+    type: "type1"
   }),
 
   computed: {
@@ -106,6 +117,14 @@ export default {
         const [year, month, day] = this.dateTo.split("-");
         return `${day}.${month}.${year}`;
       }
+    },
+    today() {
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, "0");
+      var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+      var yyyy = today.getFullYear();
+
+      return (today = yyyy + "-" + mm + "-" + dd);
     }
   },
 
