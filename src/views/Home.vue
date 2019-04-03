@@ -173,19 +173,22 @@ export default {
     },
 
     downloadWithVueResource() {
-      console.log({
-        dateFrom: this.computedDateFrom,
-        dateTo: this.computedDateTo,
-        purchaseType: this.purchaseType,
-        localStorage: this.localStorage
-      });
-      // this.$refs.form.validate();
       if (this.$refs.form.validate()) {
-        Vue.http({
-          method: "get",
-          url: this.url,
-          responseType: "arraybuffer"
-        })
+        const payload = {
+          dateFrom: this.computedDateFrom,
+          dateTo: this.computedDateTo,
+          purchaseType: this.purchaseType,
+          localStorage: this.localStorage
+        };
+
+        Vue.http(
+          {
+            method: "get",
+            url: this.url,
+            responseType: "arraybuffer"
+          },
+          payload
+        )
           .then(response => {
             this.forceFileDownload(response);
           })
@@ -193,17 +196,22 @@ export default {
       }
     }
 
-    // submit() {
-    //   console.log(
-    //     "dateFrom",
-    //     this.computedDateFrom,
-    //     "dateTo",
-    //     this.computedDateTo,
-    //     "type",
-    //     this.type,
-    //     "localStorage",
-    //     this.localStorage
-    //   );
+    // for prod
+    // downloadWithVueResource() {
+    //   if (this.$refs.form.validate()) {
+    //     const payload = new FormData();
+    //     payload.append("dateFrom", this.computedDateFrom);
+    //     payload.append("dateTo", this.computedDateTo);
+    //     payload.append("purchaseType", this.purchaseType);
+    //     payload.append("localStorage", this.localStorage);
+
+    //     Vue.http
+    //       .post(this.url, payload, { responseType: "arraybuffer" })
+    //       .then(response => {
+    //         this.forceFileDownload(response);
+    //       })
+    //       .catch(() => console.log("error occured"));
+    //   }
     // }
   }
 };
