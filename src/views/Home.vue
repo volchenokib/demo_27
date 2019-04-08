@@ -1,92 +1,95 @@
 <template>
-  <v-card class="pa-4 my-0 mx-auto" max-width="414" elevation="8">
-    <v-layout column justify-center>
+  <v-layout column>
+    <v-card class="pa-4 my-0 mx-auto" max-width="650" elevation="8">
       <v-form v-model="demoForm" ref="form">
-        <v-flex row>
-          <!-- picker #1 -->
-          <v-menu
-            ref="menuFrom"
-            v-model="menuFrom"
-            :close-on-content-click="false"
-            :nudge-bottom="-60"
-            :nudge-right="-520"
-            lazy
-            transition="scale-transition"
-            offset-y
-            full-width
-            max-width="290px"
-            min-width="290px"
-          >
-            <template v-slot:activator="{ on }">
-              <v-text-field
-                class="input"
-                v-model="computedDateFrom"
-                label="от"
-                persistent-hint
-                prepend-icon="event"
-                readonly
-                required
-                :rules="fromDateRules"
-                v-on="on"
+        <v-layout row wrap justify-space-between>
+          <v-flex xs12 sm5>
+            <!-- picker #1 -->
+            <v-menu
+              ref="menuFrom"
+              v-model="menuFrom"
+              :close-on-content-click="false"
+              :nudge-bottom="-60"
+              :nudge-right="-600"
+              lazy
+              transition="scale-transition"
+              offset-y
+              full-width
+              max-width="290px"
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  class="input"
+                  v-model="computedDateFrom"
+                  label="от"
+                  persistent-hint
+                  prepend-icon="event"
+                  readonly
+                  required
+                  :rules="fromDateRules"
+                  v-on="on"
+                  color="indigo darken-1"
+                ></v-text-field>
+              </template>
+
+              <v-date-picker
+                v-model="dateFrom"
+                min="2018-01-01"
+                :max="dateTo || today"
+                no-title
+                @input="menuFrom = false"
+                scrollable
+                first-day-of-week="1"
+                locale="ru-RU"
                 color="indigo darken-1"
-              ></v-text-field>
-            </template>
+              ></v-date-picker>
+            </v-menu>
+          </v-flex>
 
-            <v-date-picker
-              v-model="dateFrom"
-              min="2018-01-01"
-              :max="dateTo || today"
-              no-title
-              @input="menuFrom = false"
-              scrollable
-              first-day-of-week="1"
-              locale="ru-RU"
-              color="indigo darken-1"
-            ></v-date-picker>
-          </v-menu>
+          <v-flex xs12 sm5>
+            <!-- picker #2 -->
+            <v-menu
+              class="menu"
+              v-model="menuTo"
+              :close-on-content-click="false"
+              :nudge-bottom="-60"
+              :nudge-right="-600"
+              lazy
+              transition="scale-transition"
+              offset-y
+              full-width
+              max-width="290px"
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  v-model="computedDateTo"
+                  label="до"
+                  persistent-hint
+                  prepend-icon="event"
+                  readonly
+                  required
+                  :rules="toDateRules"
+                  v-on="on"
+                  color="indigo darken-1"
+                ></v-text-field>
+              </template>
 
-          <v-spacer></v-spacer>
-          <!-- picker #2 -->
-          <v-menu
-            class="menu"
-            v-model="menuTo"
-            :close-on-content-click="false"
-            :nudge-bottom="-60"
-            :nudge-right="-520"
-            lazy
-            transition="scale-transition"
-            offset-y
-            full-width
-            max-width="290px"
-            min-width="290px"
-          >
-            <template v-slot:activator="{ on }">
-              <v-text-field
-                v-model="computedDateTo"
-                label="до"
-                persistent-hint
-                prepend-icon="event"
-                readonly
-                required
-                :rules="toDateRules"
-                v-on="on"
+              <v-date-picker
+                v-model="dateTo"
+                :min="dateFrom || '2018-01-01'"
+                :max="today"
+                no-title
+                @input="menuTo = false"
+                scrollable
+                first-day-of-week="1"
+                locale="ru-RU"
                 color="indigo darken-1"
-              ></v-text-field>
-            </template>
-
-            <v-date-picker
-              v-model="dateTo"
-              :min="dateFrom || '2018-01-01'"
-              :max="today"
-              no-title
-              @input="menuTo = false"
-              scrollable
-              first-day-of-week="1"
-              locale="ru-RU"
-              color="indigo darken-1"
-            ></v-date-picker>
-          </v-menu>
-        </v-flex>
+              ></v-date-picker>
+            </v-menu>
+          </v-flex>
+        </v-layout>
 
         <!-- radio buttons -->
         <v-radio-group v-model="purchaseType" :mandatory="true">
@@ -97,29 +100,33 @@
           ></v-radio>
           <v-radio label="электронный аукцион" value="eAuction" color="indigo darken-1"></v-radio>
         </v-radio-group>
+
+        <v-switch
+          v-model="localStorage"
+          label="Взять из локального хранилища"
+          color="indigo darken-1"
+        ></v-switch>
       </v-form>
-    </v-layout>
 
-    <v-switch v-model="localStorage" label="Взять из локального хранилища" color="indigo darken-1"></v-switch>
+      <v-divider></v-divider>
 
-    <v-divider></v-divider>
-
-    <!-- button -->
-    <v-btn
-      color="indigo darken-1"
-      flat
-      :disabled="buttonDisable"
-      :loading="dataLoading"
-      @click="download"
-    >
-      сформировать
-      <template v-slot:loader>
-        <span class="d-flex mt-2">
-          <v-icon class="loader mr-1" light>cached</v-icon>Загрузка
-        </span>
-      </template>
-    </v-btn>
-  </v-card>
+      <!-- button -->
+      <v-btn
+        color="indigo darken-1"
+        flat
+        :disabled="buttonDisable"
+        :loading="dataLoading"
+        @click="download"
+      >
+        сформировать
+        <template v-slot:loader>
+          <span class="d-flex mt-2">
+            <v-icon class="loader mr-1" light>cached</v-icon>Загрузка
+          </span>
+        </template>
+      </v-btn>
+    </v-card>
+  </v-layout>
 </template>
 
 

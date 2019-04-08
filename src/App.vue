@@ -4,7 +4,7 @@
       <router-link to="/">Demo #1</router-link>
       <!-- <router-link to="/about">About</router-link> -->
     </div>
-    <v-container>
+    <v-container fluid>
       <router-view/>
     </v-container>
   </div>
