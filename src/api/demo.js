@@ -6,7 +6,7 @@ export default {
 		return Vue.http(
 			{
 				method: 'get',
-				url: '',
+				url: 'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
 				responseType: 'arraybuffer'
 			},
 			payload
