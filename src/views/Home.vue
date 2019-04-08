@@ -105,24 +105,43 @@
     <v-divider></v-divider>
 
     <!-- button -->
-    <!-- <v-btn color="indigo darken-1" flat @click.prevent="submit">сформировать</v-btn> -->
-    <v-btn color="indigo darken-1" flat @click="downloadWithVueResource">сформировать</v-btn>
+    <v-btn
+      color="indigo darken-1"
+      flat
+      :disabled="buttonDisable"
+      :loading="dataLoading"
+      @click="download"
+    >
+      сформировать
+      <template v-slot:loader>
+        <span class="d-flex mt-2">
+          <v-icon class="loader mr-1" light>cached</v-icon>Загрузка
+        </span>
+      </template>
+    </v-btn>
   </v-card>
 </template>
 
 
 <style lang="scss">
-// .input {
-//   position: relative !important;
-// }
-// .custom {
-//   margin: 0 auto;
-// }
+.loader {
+  animation: loader 1s infinite;
+  margin-top: -4px;
+}
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 </style>
 
 
 <script>
 import Vue from "vue";
+import { setTimeout } from "timers";
 export default {
   name: "home",
   data: () => ({
@@ -134,22 +153,39 @@ export default {
     menuFrom: false,
     menuTo: false,
     purchaseType: "singleProvider",
-    localStorage: false,
-    url: "https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png"
-    // url: "http://producthelp.sdl.com/sdl%20trados%20studio/client_en/sample.xml"
+    localStorage: false
   }),
 
   computed: {
-    computedDateFrom() {
-      if (this.dateFrom) {
-        const [year, month, day] = this.dateFrom.split("-");
-        return `${day}.${month}.${year}`;
+    resetForm() {
+      return this.$store.getters.formResetNeed;
+    },
+    dataLoading() {
+      return this.$store.getters.getDataState;
+    },
+    buttonDisable() {
+      return this.$store.getters.getButtonState;
+    },
+    computedDateFrom: {
+      set: function() {
+        this.dateFrom;
+      },
+      get: function() {
+        if (this.dateFrom) {
+          const [year, month, day] = this.dateFrom.split("-");
+          return `${day}.${month}.${year}`;
+        }
       }
     },
-    computedDateTo() {
-      if (this.dateTo) {
-        const [year, month, day] = this.dateTo.split("-");
-        return `${day}.${month}.${year}`;
+    computedDateTo: {
+      set: function() {
+        this.dateTo;
+      },
+      get: function() {
+        if (this.dateTo) {
+          const [year, month, day] = this.dateTo.split("-");
+          return `${day}.${month}.${year}`;
+        }
       }
     },
     today() {
@@ -162,57 +198,33 @@ export default {
     }
   },
 
+  watch: {
+    resetForm() {
+      this.$refs.form.reset();
+      this.dateFrom = null;
+      this.dateTo = null;
+      this.purchaseType = "singleProvider";
+      this.localStorage = false;
+      // this.$store.state.form.isReset = false;
+      this.$store.commit("API_DATA_SUCCES", false);
+      console.log("watcher", this.$store.state.form.isReset);
+    }
+  },
+
   methods: {
-    forceFileDownload(response) {
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "file.xls"); //or any other extension
-      document.body.appendChild(link);
-      link.click();
-    },
-
-    downloadWithVueResource() {
+    download() {
       if (this.$refs.form.validate()) {
-        const payload = {
-          dateFrom: this.computedDateFrom,
-          dateTo: this.computedDateTo,
-          purchaseType: this.purchaseType,
-          localStorage: this.localStorage
-        };
+        const payload = new FormData();
 
-        Vue.http(
-          {
-            method: "get",
-            url: this.url,
-            responseType: "arraybuffer"
-          },
-          payload
-        )
-          .then(response => {
-            this.forceFileDownload(response);
-          })
-          .catch(() => console.log("error occured"));
+        payload.append("dateFrom", this.computedDateFrom);
+        payload.append("dateTo", this.computedDateTo);
+        payload.append("purchaseType", this.purchaseType);
+        payload.append("localStorage", this.localStorage);
+        console.log("payload", payload);
+
+        this.$store.dispatch("downloadFile", payload);
       }
     }
-
-    // for prod
-    // downloadWithVueResource() {
-    //   if (this.$refs.form.validate()) {
-    //     const payload = new FormData();
-    //     payload.append("dateFrom", this.computedDateFrom);
-    //     payload.append("dateTo", this.computedDateTo);
-    //     payload.append("purchaseType", this.purchaseType);
-    //     payload.append("localStorage", this.localStorage);
-
-    //     Vue.http
-    //       .post(this.url, payload, { responseType: "arraybuffer" })
-    //       .then(response => {
-    //         this.forceFileDownload(response);
-    //       })
-    //       .catch(() => console.log("error occured"));
-    //   }
-    // }
   }
 };
 </script>

@@ -6,7 +6,6 @@ import VueResource from 'vue-resource';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 import ru from 'vuetify/es5/locale/ru';
-// import ru from "vuetify/src/locale/ru.ts";
 
 Vue.use(Vuetify, {
 	lang: {
