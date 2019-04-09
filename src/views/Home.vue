@@ -1,6 +1,6 @@
 <template>
   <v-layout column>
-    <v-card class="pa-4 my-0 mx-auto" max-width="650" elevation="8">
+    <v-card class="pa-4 my-0 mx-auto dropDown" max-width="650" elevation="8">
       <v-form v-model="demoForm" ref="form">
         <v-layout row wrap justify-space-between>
           <v-flex xs12 sm5>
@@ -9,18 +9,14 @@
               ref="menuFrom"
               v-model="menuFrom"
               :close-on-content-click="false"
-              :nudge-bottom="-60"
-              :nudge-right="-600"
               lazy
               transition="scale-transition"
-              offset-y
-              full-width
               max-width="290px"
               min-width="290px"
+              content-class="calendar_left"
             >
               <template v-slot:activator="{ on }">
                 <v-text-field
-                  class="input"
                   v-model="computedDateFrom"
                   label="от"
                   persistent-hint
@@ -50,17 +46,13 @@
           <v-flex xs12 sm5>
             <!-- picker #2 -->
             <v-menu
-              class="menu"
               v-model="menuTo"
               :close-on-content-click="false"
-              :nudge-bottom="-60"
-              :nudge-right="-600"
               lazy
               transition="scale-transition"
-              offset-y
-              full-width
               max-width="290px"
               min-width="290px"
+              content-class="calendar_right"
             >
               <template v-slot:activator="{ on }">
                 <v-text-field
@@ -129,8 +121,20 @@
   </v-layout>
 </template>
 
-
 <style lang="scss">
+.calendar_left {
+  left: 0 !important;
+  margin: 90px 0 0 26px;
+  top: 0 !important;
+}
+.calendar_right {
+  left: 0 !important;
+  margin: 90px 0 0 294px;
+  top: 0 !important;
+  @media (max-width: 600px) {
+    margin: 158px 0 0 26px;
+  }
+}
 .loader {
   animation: loader 1s infinite;
   margin-top: -4px;
