@@ -214,15 +214,15 @@ export default {
   methods: {
     download() {
       if (this.$refs.form.validate()) {
-        const payload = new FormData();
-
-        payload.append("dateFrom", this.computedDateFrom);
-        payload.append("dateTo", this.computedDateTo);
-        payload.append("purchaseType", this.purchaseType);
-        payload.append("localStorage", this.localStorage);
-        console.log("payload", payload);
+        const payload = {
+          dateFrom: this.computedDateFrom,
+          dateTo: this.computedDateTo,
+          purchaseType: this.purchaseType,
+          localStorage: this.localStorage
+        };
 
         this.$store.dispatch("downloadFile", payload);
+        console.log("payload", payload);
       }
     }
   }

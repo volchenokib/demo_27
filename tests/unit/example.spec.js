@@ -1,40 +1,65 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import Vuetify from "vuetify";
-import { shallowMount, mount, createLocalVue } from "@vue/test-utils";
-import demo1 from "@/components/demo1.vue";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import Vuetify from 'vuetify';
+import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
+import mockAxios from 'axios';
+import demo1 from '@/components/demo1.vue';
+import downloadFile from '@/api/demo.js';
 
-// describe("HelloWorld.vue", () => {
-// 	Vue.use(Vuetify);
+Vue.use(Vuetify);
+Vue.use(Vuex);
 
-// 	it("renders props.msg when passed", () => {
-// 		const msg = "new message";
-// 		const wrapper = shallowMount(HelloWorld, {
-// 			propsData: { msg }
-// 		});
-// 		expect(wrapper.text()).toMatch(msg);
-// 	});
-// });
+let getters;
+let actions;
+let store;
 
-describe("demo1.vue", () => {
-	Vue.use(Vuetify);
-	Vue.use(Vuex);
+store = new Vuex.Store({
+	getters,
+	actions
+});
 
-	let getters;
-	let store;
+describe('demo1.vue', () => {
+	const wrapper = mount(demo1, { store });
 
-	store = new Vuex.Store({
-		getters
+	it('renders correctly', () => {
+		expect(wrapper.element).toMatchSnapshot();
 	});
 
-	it("component is rendered", () => {
-		const wrapper = mount(demo1, { store });
-		// expect(wrapper.html()).toContain('<span class="count">0</span>');
-		// expect(wrapper.contains("v-container-stub")).toBe(true);
+	it('file download', async () => {
+		// setup
+		mockAxios.get.mockImplementationOnce(() =>
+			Promise.resolve({
+				data: { results: ['cat.jpg'] }
+			})
+		);
 
-		// let btn = wrapper.find('.btn-edit');
-		// expect(btn.exists()).toBe(true);
+		// work
+		const images = await downloadFile('cats');
 
-		expect(wrapper.contains("div")).toBe(true);
+		// expect
+		expect(images).toEqual(['cat.jpg']);
+		expect(mockAxios.get).toHaveBeenCalledTimes(1);
+		expect(mockAxios.get).toHaveBeenCalledWith(
+			'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
+			{
+				// params: {
+				// 	client_id: process.env.REACT_APP_UNSPLASH_TOKEN,
+				// 	query: "cats"
+				// }
+			}
+		);
 	});
+
+	// it('submit button works correctly', () => {
+	// 	const input = wrapper.findAll('input[type="text"]');
+	// 	input.setValue('10.04.2019');
+	// 	const button = wrapper.find('button');
+	// 	button.trigger('click');
+
+	// 	// assert event has been emitted
+	// 	expect(wrapper.emitted().download).toBeTruthy();
+
+	// 	// assert event count
+	// 	expect(wrapper.emitted().download.length).toBe(1);
+	// });
 });

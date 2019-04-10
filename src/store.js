@@ -1,6 +1,8 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import demo from "@/api/demo";
+import Vue from 'vue';
+import Vuex from 'vuex';
+// import demo from '@/api/demo';
+import axios from 'axios';
+import { baseURL } from '@/api/const';
 
 Vue.use(Vuex);
 
@@ -48,27 +50,34 @@ export default new Vuex.Store({
 
 	actions: {
 		downloadFile(store, payload) {
-			store.commit("API_DATA_PENDING");
+			store.commit('API_DATA_PENDING');
 
-			demo
-				.fetchFile(payload)
+			return axios
+				.get(
+					'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
+					{
+						responseType: 'arraybuffer'
+					},
+					payload
+				)
 				.then(response => {
 					// server imitation
 					setTimeout(() => {
-						store.commit("API_DATA_SUCCES", true);
-						store.dispatch("forceFileDownload", response);
+						store.commit('API_DATA_SUCCES', true);
+						store.dispatch('forceFileDownload', response);
 					}, 5000);
 				})
 				.catch(error => {
-					store.commit("API_DATA_FAILURE", error);
+					store.commit('API_DATA_FAILURE', error);
 				});
 		},
 
 		forceFileDownload(response) {
 			const url = window.URL.createObjectURL(new Blob([response.data]));
-			const link = document.createElement("a");
+			console.log('response.data', response.data);
+			const link = document.createElement('a');
 			link.href = url;
-			link.setAttribute("download", "file.png"); //or any other extension
+			link.setAttribute('download', 'file.png'); //or any other extension
 			document.body.appendChild(link);
 			link.click();
 		}
