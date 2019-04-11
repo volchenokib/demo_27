@@ -319,6 +319,8 @@ exports[`demo1.vue component renders correctly 1`] = `
 </div>
 `;
 
+exports[`demo1.vue getErrorMessage throws an error otherwise 1`] = `"(0 , _demo.default) is not a function"`;
+
 exports[`demo1.vue preloader is works fine 1`] = `
 <div
   class="container"
@@ -649,3 +651,5 @@ exports[`demo1.vue preloader is works fine 1`] = `
   </div>
 </div>
 `;
+
+exports[`getErrorMessage throws an error otherwise 1`] = `"(0 , _demo.default) is not a function"`;

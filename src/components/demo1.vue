@@ -35,7 +35,7 @@
 
                 <v-date-picker
                   v-model="dateFrom"
-                  min="2018-01-01"
+                  min="2014-01-01"
                   :max="dateTo || today"
                   no-title
                   @input="menuFrom = false"
@@ -76,7 +76,7 @@
 
                 <v-date-picker
                   v-model="dateTo"
-                  :min="dateFrom || '2018-01-01'"
+                  :min="dateFrom || '2014-01-01'"
                   :max="today"
                   no-title
                   @input="menuTo = false"
@@ -173,6 +173,7 @@ export default {
         this.dateFrom;
       },
       get: function() {
+        console.log("dateFrom", this.dateFrom);
         if (this.dateFrom) {
           const [year, month, day] = this.dateFrom.split("-");
           return (this.formattedDateFrom = `${day}.${month}.${year}`);
