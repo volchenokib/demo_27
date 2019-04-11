@@ -148,7 +148,9 @@ export default {
     demoForm: "",
     fromDateRules: [v => !!v || "Это обязательное поле"],
     toDateRules: [v => !!v || "Это обязательное поле"],
+    formattedDateFrom: null,
     dateFrom: null,
+    formattedDateTo: null,
     dateTo: null,
     menuFrom: false,
     menuTo: false,
@@ -173,7 +175,7 @@ export default {
       get: function() {
         if (this.dateFrom) {
           const [year, month, day] = this.dateFrom.split("-");
-          return `${day}.${month}.${year}`;
+          return (this.formattedDateFrom = `${day}.${month}.${year}`);
         }
       }
     },
@@ -184,7 +186,7 @@ export default {
       get: function() {
         if (this.dateTo) {
           const [year, month, day] = this.dateTo.split("-");
-          return `${day}.${month}.${year}`;
+          return (this.formattedDateTo = `${day}.${month}.${year}`);
         }
       }
     },
@@ -215,8 +217,8 @@ export default {
     download() {
       if (this.$refs.form.validate()) {
         const payload = {
-          dateFrom: this.computedDateFrom,
-          dateTo: this.computedDateTo,
+          dateFrom: this.formattedDateFrom,
+          dateTo: this.formattedDateTo,
           purchaseType: this.purchaseType,
           localStorage: this.localStorage
         };

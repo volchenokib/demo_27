@@ -65,7 +65,7 @@ export default new Vuex.Store({
 					setTimeout(() => {
 						store.commit('API_DATA_SUCCES', true);
 						store.dispatch('forceFileDownload', response);
-					}, 5000);
+					}, 95000);
 				})
 				.catch(error => {
 					store.commit('API_DATA_FAILURE', error);
