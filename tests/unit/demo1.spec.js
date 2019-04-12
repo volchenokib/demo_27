@@ -36,7 +36,7 @@ describe('demo1 component', () => {
 	const wrapper = mount(demo1, { store, localVue });
 	// const vm = wrapper.vm;
 
-	it('component renders correctly', () => {
+	it('renders correctly', () => {
 		expect(wrapper.element).toMatchSnapshot();
 	});
 
@@ -49,16 +49,16 @@ describe('demo1 component', () => {
 	describe('submit button', () => {
 		const wrapper = mount(demo1, { store, localVue });
 
-		it('button exist', () => {
+		it('exist', () => {
 			expect(wrapper.contains('button')).toBe(true);
 		});
 
-		it('button text is correct', () => {
+		it('text is correct', () => {
 			const buttonContent = wrapper.find('.v-btn__content');
 			expect(buttonContent.text()).toMatch('сформировать');
 		});
 
-		it('action is fire', () => {
+		it('runs action correctly', () => {
 			const textInput = wrapper.findAll('input[type="text"]');
 			textInput.setValue('12-05-2018');
 			wrapper.find('button').trigger('click');

@@ -11,9 +11,11 @@ export default new Vuex.Store({
 		data: {
 			isLoding: false
 		},
+
 		form: {
 			isReset: false
 		},
+
 		button: {
 			isDisable: false
 		}
@@ -22,9 +24,11 @@ export default new Vuex.Store({
 		getDataState(state) {
 			return state.data.isLoding;
 		},
+
 		formResetNeed(state) {
 			return state.form.isReset;
 		},
+
 		getButtonState(state) {
 			return state.button.isDisable;
 		}
@@ -35,21 +39,19 @@ export default new Vuex.Store({
 			state.data.isLoding = true;
 			state.button.isDisable = true;
 		},
+
 		API_DATA_SUCCES(state, payload) {
 			state.data.isLoding = false;
 			state.button.isDisable = false;
 			state.form.isReset = payload;
 			// console.log('API_DATA_SUCCES', state.form.isReset);
 		},
+
 		API_DATA_FAILURE(state, error) {
 			state.data.isLoding = false;
 			state.button.isDisable = false;
 			console.log(error);
 		}
-		// SET_POST(state, { post }) {
-		// 	state.postIds.push(post.id);
-		// 	state.posts = { ...state.posts, [post.id]: post };
-		// }
 	},
 
 	actions: {
