@@ -46,6 +46,10 @@ export default new Vuex.Store({
 			state.button.isDisable = false;
 			console.log(error);
 		}
+		// SET_POST(state, { post }) {
+		// 	state.postIds.push(post.id);
+		// 	state.posts = { ...state.posts, [post.id]: post };
+		// }
 	},
 
 	actions: {
@@ -65,7 +69,7 @@ export default new Vuex.Store({
 					setTimeout(() => {
 						store.commit('API_DATA_SUCCES', true);
 						store.dispatch('forceFileDownload', response);
-					}, 95000);
+					}, 5000);
 				})
 				.catch(error => {
 					store.commit('API_DATA_FAILURE', error);

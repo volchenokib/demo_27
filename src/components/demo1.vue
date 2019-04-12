@@ -173,7 +173,6 @@ export default {
         this.dateFrom;
       },
       get: function() {
-        console.log("dateFrom", this.dateFrom);
         if (this.dateFrom) {
           const [year, month, day] = this.dateFrom.split("-");
           return (this.formattedDateFrom = `${day}.${month}.${year}`);
@@ -225,7 +224,7 @@ export default {
         };
 
         this.$store.dispatch("downloadFile", payload);
-        console.log("payload", payload);
+        // console.log("payload", payload);
       }
     }
   }
