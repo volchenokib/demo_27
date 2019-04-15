@@ -209,7 +209,7 @@ export default {
       this.localStorage = false;
       // this.$store.state.form.isReset = false;
       this.$store.commit("API_DATA_SUCCES", false);
-      console.log("watcher", this.$store.state.form.isReset);
+      // console.log("watcher", this.$store.state.form.isReset);
     }
   },
 
@@ -224,7 +224,7 @@ export default {
         };
 
         this.$store.dispatch("downloadFile", payload);
-        // console.log("payload", payload);
+        console.log("payload", payload);
       }
     }
   }

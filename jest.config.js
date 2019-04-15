@@ -17,5 +17,9 @@ module.exports = {
 	testURL: 'http://localhost/',
 	collectCoverage: true,
 	collectCoverageFrom: ['**/*.{js,vue}', '!**/node_modules/**'],
-	coverageReporters: ['html', 'text-summary']
+	coverageReporters: ['html', 'text-summary'],
+	watchPlugins: [
+		'C:\\Users\\igor.volchenok\\Desktop\\demoVuetify\\app\\node_modules\\jest-watch-typeahead\\filename.js',
+		'C:\\Users\\igor.volchenok\\Desktop\\demoVuetify\\app\\node_modules\\jest-watch-typeahead\\testname.js'
+	]
 };

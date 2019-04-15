@@ -3,22 +3,18 @@ import Vuex from 'vuex';
 import Vuetify from 'vuetify';
 import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
 import demo1 from '@/components/demo1.vue';
+import moxios from 'moxios';
 
 const localVue = createLocalVue();
 
-Vue.use(Vuetify);
+localVue.use(Vuetify);
 localVue.use(Vuex);
 
+let store;
+let state;
 let actions;
 let mutations;
-let getters;
-let store;
-
-// getters = {
-// 	getDataState: () => false,
-// 	formResetNeed: () => false,
-// 	getButtonState: () => false
-// };
+let commit;
 
 actions = {
 	downloadFile: jest.fn(),
@@ -29,10 +25,20 @@ store = new Vuex.Store({
 	state: {},
 	actions,
 	mutations,
-	getters
+	commit
 });
 
 describe('demo1 component', () => {
+	// beforeEach(function() {
+	// 	// import and pass your custom axios instance to this method
+	// 	moxios.install();
+	// });
+
+	// afterEach(function() {
+	// 	// import and pass your custom axios instance to this method
+	// 	moxios.uninstall();
+	// });
+
 	const wrapper = mount(demo1, { store, localVue });
 	// const vm = wrapper.vm;
 
@@ -47,8 +53,6 @@ describe('demo1 component', () => {
 	});
 
 	describe('submit button', () => {
-		const wrapper = mount(demo1, { store, localVue });
-
 		it('exist', () => {
 			expect(wrapper.contains('button')).toBe(true);
 		});
@@ -60,10 +64,16 @@ describe('demo1 component', () => {
 
 		it('runs action correctly', () => {
 			const textInput = wrapper.findAll('input[type="text"]');
-			textInput.setValue('12-05-2018');
+			textInput.setValue('01-01-2018');
 			wrapper.find('button').trigger('click');
 			expect(actions.downloadFile).toHaveBeenCalled();
 			expect(actions.downloadFile).toHaveBeenCalledTimes(1);
+			// expect(actions.downloadFile).toHaveBeenLastCalledWith(store, {
+			// 	dateFrom: '01.01.2018',
+			// 	dateTo: '01.01.2018',
+			// 	purchaseType: 'singleProvider',
+			// 	localStorage: false
+			// });
 		});
 	});
 });

@@ -1,639 +1,214 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`demo1 component component renders correctly 1`] = `
-<div
-  class="container"
->
-  <div
-    class="layout column"
-  >
-    <div
-      class="pa-4 my-0 mx-auto dropDown v-card v-sheet theme--light elevation-8"
-      style="max-width: 650px;"
-    >
-      <form
-        class="v-form text-xs-center"
-        novalidate="novalidate"
-      >
-        <div
-          class="layout row wrap justify-space-between"
-        >
-          <div
-            class="flex xs12 sm5"
-          >
-            <div
-              class="v-input v-text-field v-input--is-readonly theme--light"
-            >
-              <div
-                class="v-input__prepend-outer"
-              >
-                <div
-                  class="v-input__icon v-input__icon--prepend"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="v-icon material-icons theme--light"
-                  >
-                    event
-                  </i>
-                </div>
-              </div>
-              <div
-                class="v-input__control"
-              >
-                <div
-                  class="v-input__slot"
-                >
-                  <div
-                    class="v-text-field__slot"
-                  >
-                    <label
-                      aria-hidden="true"
-                      class="v-label theme--light"
-                      style="left: 0px; position: absolute;"
-                    >
-                      от
-                    </label>
-                    <input
-                      aria-label="от"
-                      readonly="readonly"
-                      required="required"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="v-text-field__details"
-                >
-                  <div
-                    class="v-messages theme--light"
-                  >
-                    <div
-                      class="v-messages__wrapper"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="v-menu"
-            >
-              <div
-                class="v-menu__content theme--light "
-                style="max-height: auto; min-width: 290px; max-width: 290px; top: 30px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-              />
-            </div>
-          </div>
-           
-          <div
-            class="flex xs12 sm5"
-          >
-            <div
-              class="v-input v-text-field v-input--is-readonly theme--light"
-            >
-              <div
-                class="v-input__prepend-outer"
-              >
-                <div
-                  class="v-input__icon v-input__icon--prepend"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="v-icon material-icons theme--light"
-                  >
-                    event
-                  </i>
-                </div>
-              </div>
-              <div
-                class="v-input__control"
-              >
-                <div
-                  class="v-input__slot"
-                >
-                  <div
-                    class="v-text-field__slot"
-                  >
-                    <label
-                      aria-hidden="true"
-                      class="v-label theme--light"
-                      style="left: 0px; position: absolute;"
-                    >
-                      до
-                    </label>
-                    <input
-                      aria-label="до"
-                      readonly="readonly"
-                      required="required"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="v-text-field__details"
-                >
-                  <div
-                    class="v-messages theme--light"
-                  >
-                    <div
-                      class="v-messages__wrapper"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="v-menu"
-            >
-              <div
-                class="v-menu__content theme--light "
-                style="max-height: auto; min-width: 290px; max-width: 290px; top: 30px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-              />
-            </div>
-          </div>
-        </div>
-         
-        <div
-          class="v-input v-input--selection-controls v-input--radio-group v-input--radio-group--column v-input--is-label-active v-input--is-dirty theme--light"
-        >
-          <div
-            class="v-input__control"
-          >
-            <div
-              class="v-input__slot"
-              style="height: auto;"
-            >
-              <div
-                class="v-input--radio-group__input"
-                role="radiogroup"
-              >
-                <div
-                  class="v-radio theme--light primary--text"
-                >
-                  <div
-                    class="v-input--selection-controls__input"
-                  >
-                    <input
-                      aria-checked="true"
-                      aria-label="закупка у единственного поставщика"
-                      name="v-radio-21"
-                      role="radio"
-                      type="radio"
-                      value="singleProvider"
-                    />
-                    <div
-                      class="v-input--selection-controls__ripple primary--text"
-                    />
-                    <i
-                      aria-hidden="true"
-                      class="v-icon material-icons theme--light primary--text"
-                    >
-                      radio_button_checked
-                    </i>
-                  </div>
-                  <label
-                    aria-hidden="true"
-                    class="v-label theme--light"
-                    style="left: 0px; position: relative;"
-                  >
-                    закупка у единственного поставщика
-                  </label>
-                </div>
-                 
-                <div
-                  class="v-radio theme--light"
-                >
-                  <div
-                    class="v-input--selection-controls__input"
-                  >
-                    <input
-                      aria-checked="false"
-                      aria-label="электронный аукцион"
-                      name="v-radio-21"
-                      role="radio"
-                      type="radio"
-                      value="eAuction"
-                    />
-                    <div
-                      class="v-input--selection-controls__ripple"
-                    />
-                    <i
-                      aria-hidden="true"
-                      class="v-icon material-icons theme--light"
-                    >
-                      radio_button_unchecked
-                    </i>
-                  </div>
-                  <label
-                    aria-hidden="true"
-                    class="v-label theme--light"
-                    style="left: 0px; position: relative;"
-                  >
-                    электронный аукцион
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div
-              class="v-messages theme--light"
-            >
-              <span
-                class="v-messages__wrapper"
-                name="message-transition"
-                tag="div"
-              />
-            </div>
-          </div>
-        </div>
-         
-        <div
-          class="v-input v-input--selection-controls v-input--switch theme--light"
-        >
-          <div
-            class="v-input__control"
-          >
-            <div
-              class="v-input__slot"
-            >
-              <div
-                class="v-input--selection-controls__input"
-              >
-                <input
-                  aria-checked="false"
-                  aria-label="Взять из локального хранилища"
-                  role="checkbox"
-                  type="checkbox"
-                  value=""
-                />
-                <div
-                  class="v-input--selection-controls__ripple"
-                />
-                <div
-                  class="v-input--switch__track theme--light"
-                />
-                <div
-                  class="v-input--switch__thumb theme--light"
-                >
-                  <!---->
-                </div>
-              </div>
-              <label
-                aria-hidden="true"
-                class="v-label theme--light"
-                style="left: 0px; position: relative;"
-              >
-                Взять из локального хранилища
-              </label>
-            </div>
-            <div
-              class="v-messages theme--light"
-            >
-              <span
-                class="v-messages__wrapper"
-                name="message-transition"
-                tag="div"
-              />
-            </div>
-          </div>
-        </div>
-         
-        <hr
-          class="v-divider theme--light"
-        />
-         
-        <button
-          class="v-btn v-btn--flat theme--light primary--text"
-          type="button"
-        >
-          <div
-            class="v-btn__content"
-          >
-            
-          сформировать
-          
-          </div>
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`demo1 component renders correctly 1`] = `
-<div
-  class="container"
+<v-container-stub
+  tag="div"
 >
-  <div
-    class="layout column"
+  <v-layout-stub
+    column=""
+    tag="div"
   >
-    <div
-      class="pa-4 my-0 mx-auto dropDown v-card v-sheet theme--light elevation-8"
-      style="max-width: 650px;"
+    <v-card-stub
+      class="pa-4 my-0 mx-auto dropDown"
+      elevation="8"
+      maxwidth="650"
+      tag="div"
     >
-      <form
-        class="v-form text-xs-center"
-        novalidate="novalidate"
+      <v-form-stub
+        class="text-xs-center"
+        value="true"
       >
-        <div
-          class="layout row wrap justify-space-between"
+        <v-layout-stub
+          justify-space-between=""
+          row=""
+          tag="div"
+          wrap=""
         >
-          <div
-            class="flex xs12 sm5"
+          <v-flex-stub
+            sm5=""
+            tag="div"
+            xs12=""
           >
-            <div
-              class="v-input v-text-field v-input--is-readonly theme--light"
+            <v-menu-stub
+              closedelay="0"
+              closeonclick="true"
+              contentclass=""
+              fullwidth="true"
+              lazy="true"
+              maxheight="auto"
+              maxwidth="290px"
+              minwidth="290px"
+              nudgebottom="30"
+              nudgeleft="0"
+              nudgeright="0"
+              nudgetop="0"
+              nudgewidth="0"
+              offsety="true"
+              opendelay="0"
+              openonclick="true"
+              origin="top left"
+              transition="scale-transition"
             >
-              <div
-                class="v-input__prepend-outer"
-              >
-                <div
-                  class="v-input__icon v-input__icon--prepend"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="v-icon material-icons theme--light"
-                  >
-                    event
-                  </i>
-                </div>
-              </div>
-              <div
-                class="v-input__control"
-              >
-                <div
-                  class="v-input__slot"
-                >
-                  <div
-                    class="v-text-field__slot"
-                  >
-                    <label
-                      aria-hidden="true"
-                      class="v-label theme--light"
-                      style="left: 0px; position: absolute;"
-                    >
-                      от
-                    </label>
-                    <input
-                      aria-label="от"
-                      readonly="readonly"
-                      required="required"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="v-text-field__details"
-                >
-                  <div
-                    class="v-messages theme--light"
-                  >
-                    <div
-                      class="v-messages__wrapper"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="v-menu"
-            >
-              <div
-                class="v-menu__content theme--light "
-                style="max-height: auto; min-width: 290px; max-width: 290px; top: 30px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+               
+              <v-date-picker-stub
+                color="primary"
+                eventcolor="warning"
+                firstdayofweek="1"
+                locale="ru-RU"
+                max="2019-04-15"
+                min="2014-01-01"
+                nexticon="$vuetify.icons.next"
+                notitle="true"
+                previcon="$vuetify.icons.prev"
+                scrollable="true"
+                showcurrent="true"
+                type="date"
+                width="290"
               />
-            </div>
-          </div>
+            </v-menu-stub>
+          </v-flex-stub>
            
-          <div
-            class="flex xs12 sm5"
+          <v-flex-stub
+            sm5=""
+            tag="div"
+            xs12=""
           >
-            <div
-              class="v-input v-text-field v-input--is-readonly theme--light"
+            <v-menu-stub
+              closedelay="0"
+              closeonclick="true"
+              contentclass=""
+              fullwidth="true"
+              lazy="true"
+              maxheight="auto"
+              maxwidth="290px"
+              minwidth="290px"
+              nudgebottom="30"
+              nudgeleft="0"
+              nudgeright="0"
+              nudgetop="0"
+              nudgewidth="0"
+              offsety="true"
+              opendelay="0"
+              openonclick="true"
+              origin="top left"
+              transition="scale-transition"
             >
-              <div
-                class="v-input__prepend-outer"
-              >
-                <div
-                  class="v-input__icon v-input__icon--prepend"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="v-icon material-icons theme--light"
-                  >
-                    event
-                  </i>
-                </div>
-              </div>
-              <div
-                class="v-input__control"
-              >
-                <div
-                  class="v-input__slot"
-                >
-                  <div
-                    class="v-text-field__slot"
-                  >
-                    <label
-                      aria-hidden="true"
-                      class="v-label theme--light"
-                      style="left: 0px; position: absolute;"
-                    >
-                      до
-                    </label>
-                    <input
-                      aria-label="до"
-                      readonly="readonly"
-                      required="required"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="v-text-field__details"
-                >
-                  <div
-                    class="v-messages theme--light"
-                  >
-                    <div
-                      class="v-messages__wrapper"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="v-menu"
-            >
-              <div
-                class="v-menu__content theme--light "
-                style="max-height: auto; min-width: 290px; max-width: 290px; top: 30px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+               
+              <v-date-picker-stub
+                color="primary"
+                eventcolor="warning"
+                firstdayofweek="1"
+                locale="ru-RU"
+                max="2019-04-15"
+                min="2014-01-01"
+                nexticon="$vuetify.icons.next"
+                notitle="true"
+                previcon="$vuetify.icons.prev"
+                scrollable="true"
+                showcurrent="true"
+                type="date"
+                width="290"
               />
-            </div>
-          </div>
-        </div>
+            </v-menu-stub>
+          </v-flex-stub>
+        </v-layout-stub>
          
-        <div
-          class="v-input v-input--selection-controls v-input--radio-group v-input--radio-group--column v-input--is-label-active v-input--is-dirty theme--light"
+        <v-radio-group-stub
+          backgroundcolor=""
+          column="true"
+          errorcount="1"
+          errormessages=""
+          height="auto"
+          mandatory="true"
+          messages=""
+          rules=""
+          successmessages=""
+          value="singleProvider"
+          valuecomparator="function deepEqual(a, b) {
+    if (a === b) return true;
+    if (a instanceof Date && b instanceof Date) {
+        // If the values are Date, they were convert to timestamp with getTime and compare it
+        if (a.getTime() !== b.getTime()) return false;
+    }
+    if (a !== Object(a) || b !== Object(b)) {
+        // If the values aren't objects, they were already checked for equality
+        return false;
+    }
+    var props = Object.keys(a);
+    if (props.length !== Object.keys(b).length) {
+        // Different number of props, don't bother to check
+        return false;
+    }
+    return props.every(function (p) {
+        return deepEqual(a[p], b[p]);
+    });
+}"
         >
-          <div
-            class="v-input__control"
-          >
-            <div
-              class="v-input__slot"
-              style="height: auto;"
-            >
-              <div
-                class="v-input--radio-group__input"
-                role="radiogroup"
-              >
-                <div
-                  class="v-radio theme--light primary--text"
-                >
-                  <div
-                    class="v-input--selection-controls__input"
-                  >
-                    <input
-                      aria-checked="true"
-                      aria-label="закупка у единственного поставщика"
-                      name="v-radio-21"
-                      role="radio"
-                      type="radio"
-                      value="singleProvider"
-                    />
-                    <div
-                      class="v-input--selection-controls__ripple primary--text"
-                    />
-                    <i
-                      aria-hidden="true"
-                      class="v-icon material-icons theme--light primary--text"
-                    >
-                      radio_button_checked
-                    </i>
-                  </div>
-                  <label
-                    aria-hidden="true"
-                    class="v-label theme--light"
-                    style="left: 0px; position: relative;"
-                  >
-                    закупка у единственного поставщика
-                  </label>
-                </div>
-                 
-                <div
-                  class="v-radio theme--light"
-                >
-                  <div
-                    class="v-input--selection-controls__input"
-                  >
-                    <input
-                      aria-checked="false"
-                      aria-label="электронный аукцион"
-                      name="v-radio-21"
-                      role="radio"
-                      type="radio"
-                      value="eAuction"
-                    />
-                    <div
-                      class="v-input--selection-controls__ripple"
-                    />
-                    <i
-                      aria-hidden="true"
-                      class="v-icon material-icons theme--light"
-                    >
-                      radio_button_unchecked
-                    </i>
-                  </div>
-                  <label
-                    aria-hidden="true"
-                    class="v-label theme--light"
-                    style="left: 0px; position: relative;"
-                  >
-                    электронный аукцион
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div
-              class="v-messages theme--light"
-            >
-              <span
-                class="v-messages__wrapper"
-                name="message-transition"
-                tag="div"
-              />
-            </div>
-          </div>
-        </div>
+          <v-radio-stub
+            color="primary"
+            label="закупка у единственного поставщика"
+            officon="$vuetify.icons.radioOff"
+            onicon="$vuetify.icons.radioOn"
+            ripple="true"
+            value="singleProvider"
+          />
+           
+          <v-radio-stub
+            color="primary"
+            label="электронный аукцион"
+            officon="$vuetify.icons.radioOff"
+            onicon="$vuetify.icons.radioOn"
+            ripple="true"
+            value="eAuction"
+          />
+        </v-radio-group-stub>
          
-        <div
-          class="v-input v-input--selection-controls v-input--switch theme--light"
-        >
-          <div
-            class="v-input__control"
-          >
-            <div
-              class="v-input__slot"
-            >
-              <div
-                class="v-input--selection-controls__input"
-              >
-                <input
-                  aria-checked="false"
-                  aria-label="Взять из локального хранилища"
-                  role="checkbox"
-                  type="checkbox"
-                  value=""
-                />
-                <div
-                  class="v-input--selection-controls__ripple"
-                />
-                <div
-                  class="v-input--switch__track theme--light"
-                />
-                <div
-                  class="v-input--switch__thumb theme--light"
-                >
-                  <!---->
-                </div>
-              </div>
-              <label
-                aria-hidden="true"
-                class="v-label theme--light"
-                style="left: 0px; position: relative;"
-              >
-                Взять из локального хранилища
-              </label>
-            </div>
-            <div
-              class="v-messages theme--light"
-            >
-              <span
-                class="v-messages__wrapper"
-                name="message-transition"
-                tag="div"
-              />
-            </div>
-          </div>
-        </div>
-         
-        <hr
-          class="v-divider theme--light"
+        <v-switch-stub
+          backgroundcolor=""
+          color="primary"
+          errorcount="1"
+          errormessages=""
+          label="Взять из локального хранилища"
+          messages=""
+          ripple="true"
+          rules=""
+          successmessages=""
+          valuecomparator="function deepEqual(a, b) {
+    if (a === b) return true;
+    if (a instanceof Date && b instanceof Date) {
+        // If the values are Date, they were convert to timestamp with getTime and compare it
+        if (a.getTime() !== b.getTime()) return false;
+    }
+    if (a !== Object(a) || b !== Object(b)) {
+        // If the values aren't objects, they were already checked for equality
+        return false;
+    }
+    var props = Object.keys(a);
+    if (props.length !== Object.keys(b).length) {
+        // Different number of props, don't bother to check
+        return false;
+    }
+    return props.every(function (p) {
+        return deepEqual(a[p], b[p]);
+    });
+}"
         />
          
-        <button
-          class="v-btn v-btn--flat theme--light primary--text"
+        <v-divider-stub />
+         
+        <v-btn-stub
+          activeclass="v-btn--active"
+          color="primary"
+          flat="true"
+          tag="button"
           type="button"
         >
-          <div
-            class="v-btn__content"
-          >
-            
+          
           сформировать
           
-          </div>
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
+        </v-btn-stub>
+      </v-form-stub>
+    </v-card-stub>
+  </v-layout-stub>
+</v-container-stub>
 `;
