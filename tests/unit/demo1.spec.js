@@ -28,21 +28,7 @@ store = new Vuex.Store({
 	commit
 });
 
-<<<<<<< HEAD
 describe('download file pipeline', () => {
-=======
-describe('demo1 component', () => {
-	// beforeEach(function() {
-	// 	// import and pass your custom axios instance to this method
-	// 	moxios.install();
-	// });
-
-	// afterEach(function() {
-	// 	// import and pass your custom axios instance to this method
-	// 	moxios.uninstall();
-	// });
-
->>>>>>> d1f92c124917b298e2c3121e5aa746f15abbb324
 	const wrapper = mount(demo1, { store, localVue });
 	// const vm = wrapper.vm;
 
