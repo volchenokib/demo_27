@@ -56,6 +56,7 @@ export default new Vuex.Store({
 
 	actions: {
 		downloadFile(store, payload) {
+			console.log('store', store);
 			store.commit('API_DATA_PENDING');
 
 			return axios
