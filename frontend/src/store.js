@@ -20,6 +20,7 @@ export default new Vuex.Store({
 			isDisable: false
 		}
 	},
+
 	getters: {
 		getDataState(state) {
 			return state.data.isLoding;
@@ -44,19 +45,16 @@ export default new Vuex.Store({
 			state.data.isLoding = false;
 			state.button.isDisable = false;
 			state.form.isReset = payload;
-			// console.log('API_DATA_SUCCES', state.form.isReset);
 		},
 
 		API_DATA_FAILURE(state, error) {
 			state.data.isLoding = false;
 			state.button.isDisable = false;
-			console.log(error);
 		}
 	},
 
 	actions: {
 		downloadFile(store, payload) {
-			console.log('store', store);
 			store.commit('API_DATA_PENDING');
 
 			return axios
@@ -81,12 +79,22 @@ export default new Vuex.Store({
 
 		forceFileDownload(response) {
 			const url = window.URL.createObjectURL(new Blob([response.data]));
-			console.log('response.data', response.data);
+
 			const link = document.createElement('a');
 			link.href = url;
 			link.setAttribute('download', 'file.png'); //or any other extension
 			document.body.appendChild(link);
 			link.click();
+		},
+		async downloadFile2() {
+			try {
+				const response = await axios.get('http://localhost:8081/downloadFile', {
+					responseType: 'arraybuffer'
+				});
+				console.log('response', response);
+			} catch (e) {
+				console.log('Error', e);
+			}
 		}
 	}
 });

@@ -106,6 +106,7 @@
 
           <!-- button -->
           <v-btn
+            ref="downloadButton"
             color="primary"
             flat
             :disabled="buttonDisable"
@@ -139,7 +140,6 @@
   }
 }
 </style>
-
 
 <script>
 export default {
@@ -209,7 +209,6 @@ export default {
       this.localStorage = false;
       // this.$store.state.form.isReset = false;
       this.$store.commit("API_DATA_SUCCES", false);
-      // console.log("watcher", this.$store.state.form.isReset);
     }
   },
 
@@ -223,8 +222,8 @@ export default {
           localStorage: this.localStorage
         };
 
-        this.$store.dispatch("downloadFile", payload);
-        console.log("payload", payload);
+        // this.$store.dispatch("downloadFile", payload);
+        this.$store.dispatch("downloadFile2");
       }
     }
   }
