@@ -2,7 +2,7 @@
   <v-container>
     <v-layout column>
       <v-card class="pa-4 my-0 mx-auto dropDown" max-width="650" elevation="8">
-        <v-form v-model="demoForm" ref="form" class="text-xs-center">
+        <v-form v-model="demoForm" ref="form" name="demoForm" class="text-xs-center">
           <v-layout row wrap justify-space-between>
             <!-- picker #1 -->
             <v-flex xs12 sm5>
@@ -92,15 +92,22 @@
           <!-- radio buttons -->
           <v-radio-group v-model="purchaseType" :mandatory="true">
             <v-radio
+              name="singleProvider"
               label="закупка у единственного поставщика"
               value="singleProvider"
               color="primary"
             ></v-radio>
-            <v-radio label="электронный аукцион" value="eAuction" color="primary"></v-radio>
+            <v-radio name="eAuction" label="электронный аукцион" value="eAuction" color="primary"></v-radio>
           </v-radio-group>
 
           <!-- switcher -->
-          <v-switch v-model="localStorage" label="Взять из локального хранилища" color="primary"></v-switch>
+          <v-switch
+            name="localStorage"
+            :value="true"
+            v-model="localStorage"
+            label="Взять из локального хранилища"
+            color="primary"
+          ></v-switch>
 
           <v-divider></v-divider>
 
@@ -111,7 +118,7 @@
             flat
             :disabled="buttonDisable"
             :loading="dataLoading"
-            @click="download"
+            @click="submit"
           >
             сформировать
             <template v-slot:loader>
@@ -142,6 +149,11 @@
 </style>
 
 <script>
+// TODO:
+// + formData
+// - remove getters
+// - error handler
+// - notifications
 export default {
   name: "demo1",
   data: () => ({
@@ -213,18 +225,36 @@ export default {
   },
 
   methods: {
-    download() {
+    submit() {
       if (this.$refs.form.validate()) {
-        const payload = {
-          dateFrom: this.formattedDateFrom,
-          dateTo: this.formattedDateTo,
-          purchaseType: this.purchaseType,
-          localStorage: this.localStorage
-        };
+        const payload = new FormData(demoForm);
 
-        // this.$store.dispatch("downloadFile", payload);
-        this.$store.dispatch("downloadFile2");
+        payload.append("dateFrom", this.formattedDateFrom);
+        payload.append("dateTo", this.formattedDateTo);
+
+        // Display the keys
+        // for (let key of payload.keys()) {
+        //   console.log(key);
+        // }
+
+        // Display the values
+        // for (let value of payload.values()) {
+        //   console.log(value);
+        // }
+
+        this.$store
+          .dispatch("getFile", payload)
+          .then(response => this.download(response));
       }
+    },
+
+    download(response) {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "file.xlsx");
+      document.body.appendChild(link);
+      link.click();
     }
   }
 };

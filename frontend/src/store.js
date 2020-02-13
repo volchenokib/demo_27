@@ -47,53 +47,30 @@ export default new Vuex.Store({
 			state.form.isReset = payload;
 		},
 
-		API_DATA_FAILURE(state, error) {
+		API_DATA_FAILURE(state) {
 			state.data.isLoding = false;
 			state.button.isDisable = false;
 		}
 	},
 
 	actions: {
-		downloadFile(store, payload) {
-			store.commit('API_DATA_PENDING');
-
-			return axios
-				.get(
-					'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
+		async getFile(store, payload) {
+			try {
+				store.commit('API_DATA_PENDING');
+				const response = await axios.get(
+					'http://localhost:8081/downloadFile',
 					{
 						responseType: 'arraybuffer'
 					},
 					payload
-				)
-				.then(response => {
-					// server imitation
-					setTimeout(() => {
-						store.commit('API_DATA_SUCCES', true);
-						store.dispatch('forceFileDownload', response);
-					}, 5000);
-				})
-				.catch(error => {
-					store.commit('API_DATA_FAILURE', error);
-				});
-		},
-
-		forceFileDownload(response) {
-			const url = window.URL.createObjectURL(new Blob([response.data]));
-
-			const link = document.createElement('a');
-			link.href = url;
-			link.setAttribute('download', 'file.png'); //or any other extension
-			document.body.appendChild(link);
-			link.click();
-		},
-		async downloadFile2() {
-			try {
-				const response = await axios.get('http://localhost:8081/downloadFile', {
-					responseType: 'arraybuffer'
-				});
+				);
 				console.log('response', response);
+				store.commit('API_DATA_SUCCES', true);
+				return response;
 			} catch (e) {
 				console.log('Error', e);
+				store.commit('API_DATA_FAILURE', e);
+				return e;
 			}
 		}
 	}
