@@ -12,7 +12,7 @@
     </v-toolbar>
 
     <v-content>
-      <demo1/>
+      <demo1 />
     </v-content>
   </v-app>
 </template>
